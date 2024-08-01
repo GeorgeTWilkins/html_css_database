@@ -34,6 +34,7 @@ p {
 h1.
 h2,
 h3 {
+    color: var(--clr-primary-200);
     font-family: var(--ff-accent);
     font-weight: 900;
     line-height: 1;
@@ -45,6 +46,7 @@ p {
     margin-bottom: 1em;}
 
 img {
+    display: block;
     max-width: 100%;
 }
 
@@ -55,7 +57,14 @@ img {
 
 header,
 section {
-    padding: 3rem 0;
+    padding: 4rem 0;
+}
+
+@media (min-width: 40em) {
+    header,
+    section {
+    padding: 7rem 0;
+}
 }
 
 .container {
@@ -84,4 +93,43 @@ section {
 .bg-primary h2,
 .bg-dark h2 {
     color: var(--clr-primary-200)
+}
+
+.split {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 40em) {
+    .split {
+        flex-direction: row;
+    }
+
+    .split > * {
+        flex-basis: 100%;
+    }
+
+    .split > * + * {
+        margin-left: 2em;
+    }
+}
+
+
+.call-to-action {
+    background-color: var(--clr-primary-500);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.button-cta {
+    color: var(--clr-primary-200);
+    background-color: var(--clr-primary-500);
+    font-size: 2rem;
+    border: none;
+    padding: 1rem;
+}
+
+.button-cta:hover {
+    background-color: var(--clr-primary-200);
+    color: var(--clr-primary-500);
 }
