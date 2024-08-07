@@ -8,9 +8,9 @@
     </div>
 </header>
 
-<div class="spell-view">
+<div class="spell-result-primary">
     {% for i in range(10) %}
-        <h1 class="bg-light">Level {{ i }}</h1>
+        <h1 class="spell-view">Level {{ i }}</h1>
         {% for spell in spells[i] %}
           <p>{{ spell }}</p>
         {% endfor %}
