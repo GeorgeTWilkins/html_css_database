@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>DnD Spell Database</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
-</head>
+{% extends 'layout.html' %}
 
 
-<body>
+{% block body %}
     <header class="bg-light text-center">
         <div class="container conatiner--narrow">
             <p>By George Wilkins</p>
@@ -42,7 +33,7 @@
                     <h2>What is Dungeons and Dragons?</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, alias veniam dolore sunt cumque est ad ea temporibus natus, facilis consectetur unde pariatur earum ipsa.</p></div>
                 <div>
-                    <img src="images/shiny_d20.jpg" alt="A shiny 20 sided dice">
+                    <img src="/static/images/shiny_d20.jpg" alt="A shiny 20 sided dice">
                 </div>
             </div>
         </div>
@@ -52,7 +43,7 @@
         <div class="container">
             <div class="split">
                 <div>
-                    <img src="images/fighting_tiamat.jpg" alt="Eldritch caster fighting Tiamat, Queen of Dragons">
+                    <img src="/static/images/fighting_tiamat.jpg" alt="Eldritch caster fighting Tiamat, Queen of Dragons">
                 </div>
                 <div>
                     <h2>What are Spells?</h2>
@@ -63,10 +54,9 @@
     </section>
 
     <div class="call-to-action">
-        <form  action="" method="get">
+        <form  action="{{ url_for('spell_view') }}" method="GET">
             <button class="button-cta" type="submit">Click to view the spells</button>
         </form>
     </div>
 
-</body>
-</html>
+{% endblock %}
