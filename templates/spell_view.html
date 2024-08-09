@@ -10,10 +10,10 @@
 
 <div class="spell-result-primary">
     {% for i in range(10) %}
-        <h1 class="spell-view">Level {{ i }}</h1>
-        {% for spell in spells[i] %}
-          <p>{{ spell }}</p>
-        {% endfor %}
+        <h1>Level {{ i }}</h1>
+        <div class="testing">{% for spell in spells[i] %}
+        <a href=" /spell/{{ spell }}"><p class="spell-view">{{ spell }}</p></a> 
+        {% endfor %}</div>
         {% endfor %}
 </div>
     
