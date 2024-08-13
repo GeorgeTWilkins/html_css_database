@@ -2,12 +2,18 @@
     --clr-primary-200: #F7CE65;
     --clr-primary-500: #930C10;
     --clr-primary-800: #290000;
+    --clr-primary-100: #fffebd;
 
-    --clr-neutral-000: #F0F0F0;
+    --clr-neutral-000: #ffffff;
     --clr-neutral-900: #030303;
 
     --ff-primary: 'Roboto', sans-serif;
     --ff-accent: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 *,
@@ -155,4 +161,30 @@ a {
 a:hover {
     text-decoration: none;
     color: hotpink;
+}
+
+.spell-header {
+    font-family: var(--ff-accent);
+    font-size: 2em;
+    background-color: #290000;
+    color: var(--clr-primary-100);
+}
+
+.spell-data {
+    font-family: var(--ff-primary);
+    padding: 0.5em;
+    color: var(--clr-primary-800);
+}
+
+
+* {
+	border-spacing: 0;
+}
+
+.return {
+    text-align: left;
+    text-indent: 1em;
+    color: var(--clr-neutral-900);
+    text-decoration: none;
+    display: inline-block;
 }
