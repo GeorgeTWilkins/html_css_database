@@ -27,6 +27,7 @@ body {
     font-weight: 400;
     font-size: 1.3125rem;
     line-height: 1.6;
+    background-color: var(--clr-primary-200);
 }
 
 body,
@@ -164,6 +165,7 @@ a:hover {
 }
 
 .spell-header {
+    text-align: center;
     font-family: var(--ff-accent);
     font-size: 2em;
     background-color: #290000;
@@ -174,8 +176,9 @@ a:hover {
     font-family: var(--ff-primary);
     padding: 0.5em;
     color: var(--clr-primary-800);
+    padding-right: 10px;
+    background-color: var(--clr-primary-200);
 }
-
 
 * {
 	border-spacing: 0;
@@ -187,4 +190,25 @@ a:hover {
     color: var(--clr-neutral-900);
     text-decoration: none;
     display: inline-block;
+}
+
+
+
+.call-to-action-inverse-colour {
+    background-color: var(--clr-primary-200);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.button-cta-inverse-colour {
+    color: var(--clr-primary-500);
+    background-color: var(--clr-primary-200);
+    font-size: 2rem;
+    border: none;
+    padding: 1rem;
+}
+
+.button-cta-inverse-colour:hover {
+    background-color: var(--clr-primary-500);
+    color: var(--clr-primary-200);
 }

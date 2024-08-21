@@ -16,5 +16,10 @@
         {% endfor %}</div>
         {% endfor %}
 </div>
+<div class="call-to-action-inverse-colour">
+    <form  action="{{ url_for('home_page') }}" method="GET">
+        <button class="button-cta-inverse-colour" type="submit">Home</button>
+    </form>
+</div>
     
 {% endblock %}

@@ -2,16 +2,16 @@
 
 
 {% block body %}
-<table >
-    <tr class="spell-header">
-      <th>Spell information</th>
-    </tr>
-    <!--Display information about one spell-->
-    {% for i in range(6) %}
-        <tr>
-            <td class="spell-data"><b>{{ single_spell_header[i] }}</b>{{ details[i] }} <div>
-        </tr>
-    {% endfor %}
-    </table>
-    <div><a class="return"href="/spell-view"><p>Back to spell list</p></a></div> 
+<h1 class="spell-header">Spell information</h1>
+<!--Display information about one spell-->
+{% for i in range(6) %}<div>
+<p class="spell-data"><b>{{ single_spell_header[i] }}</b>{{ details[i] }}</p>
+{% endfor %}</div>
+<div class="call-to-action">
+    <form  action="{{ url_for('spell_view') }}" method="GET">
+        <button class="button-cta" type="submit">Back to spell list</button>
+    </form>
+</div>
 {% endblock %}
+
+
