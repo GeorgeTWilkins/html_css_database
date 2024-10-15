@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<header class="bg-primary text-center">
+       <div class="add-spell-header">
+           <h1 class="light">Add Spell</h1>
+       </div>
+</header>
+
+
+<div class="spell-input">
+       <form method="GET" action="{{ url_for('add_spell_input') }}">
+       <label for="spl">Level</label>
+       <select id="spl" name="spl">
+            {% for i in range(10) %}
+            <option value={{i}}>{{ i }}</option>
+            {% endfor %}
+       </select>
+       <br>
+
+       <label for="spn">Spell Name</label>
+       <input type="text" id="spn" name="spn" placeholder="Spell name">
+
+       <br>
+
+       <label for="desc">Description</label>
+       <input type="text" id="desc" name="desc" placeholder="Description">
+       
+       <br>
+       
+       <label for="ahl">At Higher Levels</label>
+       <input type="text" id="ahl" name="ahl" placeholder="At higher levels">
+       
+       <br>
+       
+       <label for="sch">School</label>
+       <select id="sch" name="sch">
+              {% for i in schools %}
+              <option value= {{i[0]}}>{{ i[0] }}</option>
+              {% endfor %}
+       </select>
+
+       <br>
+
+       <label for="cls">Class</label>
+       <select multiple id="cls" name="cls">
+              {% for i in classes %}
+              <option value= {{i[0]}}>{{ i[0] }}</option>
+              {% endfor %}
+       </select>
+       <button class="button-submit" type="submit">Confirm</button>
+{% endblock %}

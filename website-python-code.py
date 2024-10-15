@@ -5,6 +5,7 @@ DATABASE = 'dndspells.db'
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home_page():
     return render_template('home.html')
@@ -23,6 +24,19 @@ def spell_view():
         level_to_spells[level].append(name)
     return render_template('spell_view.html', spells = level_to_spells)
 
+@app.route('/add-spell-input')
+def add_spell_input():
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    cursor.execute('''
+            SELECT class_name FROM user ORDER BY class_name ASC
+               ''')
+    classes = cursor.fetchall()
+    cursor.execute('''
+        SELECT school_name FROM school ORDER BY school_name ASC
+           ''')
+    schools = cursor.fetchall()
+    return render_template('add_spell.html', schools=schools, classes=classes)
 
 @app.route('/spell/<spell>')
 def single_spell(spell):

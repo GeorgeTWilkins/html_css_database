@@ -79,6 +79,8 @@ section {
     width: min(90%, 70.5rem);
 }
 
+
+
 .container--narrow {
     max-width: 35rem;
 }
@@ -145,6 +147,8 @@ section {
     background-color: var(--clr-primary-500);
 }
 
+
+
 .spell-view { 
     text-align: left;
     display: inline-block;
@@ -210,5 +214,43 @@ a:hover {
 
 .button-cta-inverse-colour:hover {
     background-color: var(--clr-primary-500);
+    color: var(--clr-primary-200);
+}
+
+.add-spell {
+    margin-left: 25px;
+}
+
+.spell-input {
+    margin: auto;
+    width: 50%;   
+    text-align: center;
+}
+
+input[type=text], select {
+    text-align: center;
+    width: 100%;
+    padding: 12px 20px;
+    display: block;
+    border: 1px solid var(--clr-primary-500);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--clr-primary-200);
+    background-color: var(--clr-primary-500);
+}
+  
+
+.button-submit {
+    margin: 10px;
+    background-color: var(--clr-primary-500);
+    color: var(--clr-primary-200);
+    padding: 5px 40px;
+}
+
+::placeholder {
+    color: var(--clr-primary-200);
+}
+
+.light {
     color: var(--clr-primary-200);
 }
