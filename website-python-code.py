@@ -38,6 +38,52 @@ def add_spell_input():
     schools = cursor.fetchall()
     return render_template('add_spell.html', schools=schools, classes=classes)
 
+@app.route('/add_spell_save', methods = ['GET'])
+def add_spell_save():  
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    #Try and except so that if someone enters a duplicate spell name, it won't work
+    try:
+        if request.method == 'GET':
+            spl, spn, desc, ahl, sch, cls = request.args.get('spl'), request.args.get('spn'), request.args.get('desc'), request.args.get('ahl'), request.args.get('sch'), request.args.getlist('cls')
+            sql_spell = '''
+                INSERT INTO spell (spell_level, spell_name, description, at_higher_levels) 
+                VALUES (?, ?, ?, ?);
+            ''', (spl, spn, desc, ahl)
+            cursor.execute(*sql_spell)
+            #If multiple classes have been added it will loop through and add them all
+            if len(cls) > 0:
+                for i in range(len(cls)):
+                    sql_class = '''
+                        INSERT INTO spell_user (spell_id, user_id)
+                        VALUES ((SELECT id FROM spell WHERE spell_name = ?), (SELECT id FROM user WHERE class_name = ?))
+                    ''', (spn, cls[i])
+                    cursor.execute(*sql_class)
+                sql_school = '''
+                    INSERT INTO spell_school (spell_id, school_id)
+                    VALUES ((SELECT id FROM spell WHERE spell_name = ?), (SELECT id FROM school WHERE school_name = ?))
+                ''', (spn, sch)
+                cursor.execute(*sql_school)
+                #Make sure that at_higher_levels is NULL if need be
+                cursor.execute('''
+                    UPDATE spell 
+                    SET at_higher_levels = NULL 
+                    WHERE at_higher_levels = '';
+                ''')
+                db.commit()
+                #Make it so they can view their spell once they are done.
+                return redirect(url_for('single_spell', spell=spn))
+            else:
+                return redirect(url_for('home_page'))#failed
+    except: #Not a great thing because if something else breaks, it will still go here
+        return redirect(url_for('single_spell', spell=spn))#failed
+        
+    else:
+        # This should never happen, but just incase
+        schools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation']
+        return render_template('add_spell_input.html', schools=schools)
+
+
 @app.route('/spell/<spell>')
 def single_spell(spell):
     #Have header in a list so looping is cleaner in the html part

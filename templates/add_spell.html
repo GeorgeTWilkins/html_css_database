@@ -10,7 +10,7 @@
 
 
 <div class="spell-input">
-       <form method="GET" action="{{ url_for('add_spell_input') }}">
+       <form method="GET" action="{{ url_for('add_spell_save') }}">
        <label for="spl">Level</label>
        <select id="spl" name="spl">
             {% for i in range(10) %}
@@ -42,12 +42,14 @@
        </select>
 
        <br>
-
        <label for="cls">Class</label>
        <select multiple id="cls" name="cls">
               {% for i in classes %}
               <option value= {{i[0]}}>{{ i[0] }}</option>
               {% endfor %}
        </select>
-       <button class="button-submit" type="submit">Confirm</button>
+       
+       <div class="call-to-action-add-spell">
+              <button class="button-cta-inverse-colour" type="submit">Confirm</button>
+       </div>
 {% endblock %}
