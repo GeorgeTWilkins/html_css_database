@@ -4,13 +4,23 @@
 {% block body %}
 <h1 class="spell-header">Spell information</h1>
 <!--Display information about one spell-->
-{% for i in range(6) %}<div>
-<p class="spell-data"><b>{{ single_spell_header[i] }}</b>{{ details[i] }}</p>
-{% endfor %}</div>
+<div class="two-column">
+    <div class="card1">
+    {% for i in range(6) %}
+        <p class="spell-data"><b>{{ single_spell_header[i] }}</b>{{ details[i] }}</p>  
+    {% endfor %} 
+    </div>
+    <div class="card2">
+        <form class="call-to-action-delete" method="GET" action="{{ url_for('delete_spells_save') }}">
+            <input type="hidden" name="delete_spells" value="{{details}}">
+            <button type="submit" class="button-cta">Delete spell</button>
+        </form>
+    </div>
+</div>
 <div class="call-to-action">
-    <form  action="{{ url_for('spell_view') }}" method="GET">
-        <button class="button-cta" type="submit">Back to spell list</button>
-    </form>
+            <form  action="{{ url_for('spell_view') }}" method="GET">
+                <button class="button-cta" type="submit">Back to spell list</button>
+            </form>
 </div>
 {% endblock %}
 

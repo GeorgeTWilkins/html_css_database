@@ -83,6 +83,28 @@ def add_spell_save():
         schools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation']
         return render_template('add_spell_input.html', schools=schools)
 
+@app.route('/delete_spells_save', methods = ['GET'])
+def delete_spells_save():
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    if request.method == 'GET':
+        spell = request.args.getlist('delete_spells')
+        print(spell)
+        sql_spell_user = '''
+                DELETE FROM spell_user WHERE spell_id = (SELECT spell.id FROM spell WHERE spell_name = ?);
+            ''', (spell)
+        cursor.execute(*sql_spell_user)
+        sql_spell_school = '''
+                DELETE FROM spell_school WHERE spell_id = (SELECT spell.id FROM spell WHERE spell_name = ?);
+            ''', (spell)
+        cursor.execute(*sql_spell_school)
+            #Delete the actual spell information as there was a foreign key constraint if you delete it all in one go.
+        sql_spell = '''
+            DELETE FROM spell WHERE spell_name = ?;
+            ''', (spell)
+        cursor.execute(*sql_spell)
+        db.commit()
+    return render_template('home.html', )
 
 @app.route('/spell/<spell>')
 def single_spell(spell):
