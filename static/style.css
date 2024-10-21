@@ -1,6 +1,7 @@
 :root {
-    --clr-primary-200: #F7CE65;
-    --clr-primary-500: #930C10;
+    --clr-primary-200: #dbff5b;
+    --clr-primary-500: #176703;
+    --clr-sigma-100: #ffed2b;
     --clr-primary-800: #290000;
     --clr-primary-100: #fffebd;
 
@@ -194,7 +195,7 @@ a {
 }
 a:hover {
     text-decoration: none;
-    color: hotpink;
+    color: var(--clr-sigma-100);
 }
 
 .spell-header {

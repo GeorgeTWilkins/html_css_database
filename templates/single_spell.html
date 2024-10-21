@@ -12,7 +12,7 @@
     </div>
     <div class="card2">
         <form class="call-to-action-delete" method="GET" action="{{ url_for('delete_spells_save') }}">
-            <input type="hidden" name="delete_spells" value="{{details}}">
+            <input type="hidden" name="delete_spells" value="{{details[1]}}">
             <button type="submit" class="button-cta">Delete spell</button>
         </form>
     </div>
